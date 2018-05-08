@@ -10,9 +10,10 @@
         "/LiquidaOnlinePWA/favicon.ico",
         "/LiquidaOnlinePWA/index.html",
         "/LiquidaOnlinePWA/inline.318b50c57b4eba3d437b.bundle.js",
-        "/LiquidaOnlinePWA/main.72ff980d593141db4127.bundle.js",
+        "/LiquidaOnlinePWA/main.9c96b9abc1f89c06215d.bundle.js",
         "/LiquidaOnlinePWA/polyfills.7bc06bfe621a309dd5ca.bundle.js",
-        "/LiquidaOnlinePWA/styles.82c482bba2a598361a1a.bundle.css"
+        "/LiquidaOnlinePWA/scripts.968f55bfb751cd0febb2.bundle.js",
+        "/LiquidaOnlinePWA/styles.21aa92598652aced740f.bundle.css"
       ],
       "patterns": []
     },
@@ -21,13 +22,15 @@
       "installMode": "lazy",
       "updateMode": "prefetch",
       "urls": [
+        "/LiquidaOnlinePWA/assets/background3.jpg",
         "/LiquidaOnlinePWA/assets/icon-128x128.png",
         "/LiquidaOnlinePWA/assets/icon-152x152.png",
         "/LiquidaOnlinePWA/assets/icon-192x192.png",
         "/LiquidaOnlinePWA/assets/icon-256x256.png",
         "/LiquidaOnlinePWA/assets/icon-512x512.png",
         "/LiquidaOnlinePWA/assets/icon-64x64.png",
-        "/LiquidaOnlinePWA/assets/icon-96x96.png"
+        "/LiquidaOnlinePWA/assets/icon-96x96.png",
+        "/LiquidaOnlinePWA/assets/liquidaLogo.png"
       ],
       "patterns": []
     }
@@ -35,17 +38,20 @@
   "dataGroups": [],
   "hashTable": {
     "/LiquidaOnlinePWA/inline.318b50c57b4eba3d437b.bundle.js": "998c6060446975e566fd17509558ddc68d72eec3",
+    "/LiquidaOnlinePWA/assets/background3.jpg": "bb6d51f5efd4979908bc12c705404c573e64ccfb",
+    "/LiquidaOnlinePWA/main.9c96b9abc1f89c06215d.bundle.js": "1c513b8df627a2196f486e957c1a31b598a6f33d",
     "/LiquidaOnlinePWA/assets/icon-128x128.png": "4e6dc9e826fc349b7ada82e3918423dd1ef4fc2e",
-    "/LiquidaOnlinePWA/main.72ff980d593141db4127.bundle.js": "0bdfc75f52718fc981185b55a595d6fe419ded4e",
-    "/LiquidaOnlinePWA/assets/icon-152x152.png": "b8bfa170e72e1cc27c0ed9ae4aa2289af2b04317",
     "/LiquidaOnlinePWA/polyfills.7bc06bfe621a309dd5ca.bundle.js": "996e81089ff1e16384a57aa0d9d3cc06a90133e8",
+    "/LiquidaOnlinePWA/assets/icon-152x152.png": "b8bfa170e72e1cc27c0ed9ae4aa2289af2b04317",
+    "/LiquidaOnlinePWA/scripts.968f55bfb751cd0febb2.bundle.js": "2c04185c17b4f24d012c77669afb0db42dbea1f2",
     "/LiquidaOnlinePWA/assets/icon-192x192.png": "bb14ccbaeab68155e78c5949598b2665b809e688",
-    "/LiquidaOnlinePWA/styles.82c482bba2a598361a1a.bundle.css": "c69c9fb56d87226061404a62e993505cd1f76846",
+    "/LiquidaOnlinePWA/styles.21aa92598652aced740f.bundle.css": "11deac5823844a57e91e585c8c28730ff11eb07e",
     "/LiquidaOnlinePWA/assets/icon-256x256.png": "1e42e55ddf5533181ba90ab6ca54be0116b927b0",
     "/LiquidaOnlinePWA/favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
     "/LiquidaOnlinePWA/assets/icon-512x512.png": "4d96465fd3ef96b9e668b24eec767e9e72dcf398",
-    "/LiquidaOnlinePWA/index.html": "bdb9346f462e7d00464303e165c72c03b4b5e01f",
+    "/LiquidaOnlinePWA/index.html": "3f2b8fe1083a197d9404fc0dfbb796d5e1a37515",
     "/LiquidaOnlinePWA/assets/icon-64x64.png": "a798e3c506083f0210f65abd2af666851db5a1c3",
-    "/LiquidaOnlinePWA/assets/icon-96x96.png": "452812515ee988191a0bb4388aa5dd6ecffa8ae8"
+    "/LiquidaOnlinePWA/assets/icon-96x96.png": "452812515ee988191a0bb4388aa5dd6ecffa8ae8",
+    "/LiquidaOnlinePWA/assets/liquidaLogo.png": "2b2d3b3ead2db28f117021bb02f0a4eea8c453be"
   }
 }
