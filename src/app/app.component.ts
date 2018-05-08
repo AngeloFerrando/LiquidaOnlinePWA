@@ -70,7 +70,6 @@ export class AppComponent implements OnInit {
     attachment['NomeFile'] = 'filename';
     attachment['DataGPS'] = new Date();
     attachment['Percorso'] = path;
-    attachment['']
     attachment['Latitudine'] = 23.989878;
     attachment['Longitudine'] = 97.989867;
     attachment['MemorizzaContenuto'] = false; /* sempre false - così cancella blob e salvafile su filesystem */
