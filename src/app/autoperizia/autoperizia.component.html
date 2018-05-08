@@ -1,0 +1,99 @@
+<mat-vertical-stepper class="z-depth-1" [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <small><b>Inserisci la data in cui è avvenuto il sinistro</b></small>
+      <br>
+      <br>
+
+      <ng-template matStepLabel>Data del sinistro</ng-template>
+      <mat-form-field class="date-form day-form">
+        <mat-select [matDatepicker]="picker" placeholder="Giorno" [(value)]="selectedDay" ngDefaultControl required>
+          <mat-option *ngFor="let giorno of getDays(selectedMonth)" [value]="giorno">
+            {{giorno}}
+          </mat-option>
+        </mat-select>
+
+      </mat-form-field>
+
+      <mat-form-field class="date-form month-form">
+        <mat-select placeholder="Mese" [(value)]="selectedMonth" ngDefaultControl required>
+          <mat-option *ngFor="let mese of mesi" [value]="mese">
+            {{mese.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="date-form year-form">
+        <mat-select placeholder="Anno" [(value)]="selectedYear" ngDefaultControl required>
+          <mat-option *ngFor="let anno of anni" [value]="anno">
+            {{anno}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-datepicker-toggle class="calendar" matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <br>
+      <small><b>La data è:</b></small>
+      <br>
+      <br>
+      <div class="btn-group btn-group-sm date-accuracy">
+        <label class="btn btn-sm btn-success waves-light" ngDefaultControl mdbRadio="Left" mdbWavesEffect>
+          Certa
+        </label>
+        <label class="btn btn-sm btn-yellow btn-primary waves-light" ngDefaultControl mdbRadio="Middle" mdbWavesEffect>
+          Probabile
+        </label>
+        <label class="btn btn-sm btn-deep-orange btn-primary waves-light" ngDefaultControl mdbRadio="Right"
+               mdbWavesEffect>
+          Sconosciuta
+        </label>
+      </div>
+
+      <div>
+        <button mat-button class=" confirm btn-primary" matStepperNext>Conferma</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Causa del sinistro</ng-template>
+      <mat-form-field ngDefaultControl>
+        <input matInput placeholder="Address" formControlName="secondCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Scelta del danno</ng-template>
+    You are now done.
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Descrizione danno</ng-template>
+  </mat-step>
+
+  <mat-step class="step-misurazione-locale">
+    <ng-template matStepLabel>Ripresa e misurazione locale</ng-template>
+    <label (click)="cam.play()" class="btn btn-secondary">da 0.01 a 7.00 MQ</label>
+    <label (click)="cam.play()" class="btn btn-secondary">da 0.01 a 7.00 MQ</label>
+    <label (click)="cam.play()" class="btn btn-secondary ">da 0.01 a 7.00 MQ</label>
+    <label (click)="cam.play()" class="btn btn-secondary">da 0.01 a 7.00 MQ</label>
+    <app-cam #cam></app-cam>
+
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>Ripresa fotografica del danno</ng-template>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Conclusione</ng-template>
+  </mat-step>
+
+</mat-vertical-stepper>
+

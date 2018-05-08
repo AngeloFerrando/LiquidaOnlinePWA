@@ -1,0 +1,50 @@
+<!--Modal: Login Form-->
+<div mdbModal #loginModal="mdb-modal" class="modal fade" [config]="{backdrop: false, ignoreBackdropClick: true}"
+     id="modalLogin" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog cascading-modal" role="document">
+    <!--Content-->
+    <div class="modal-content">
+
+      <!--Header-->
+      <div class="modal-header light-blue darken-3 white-text">
+        <h4 class="title"><i class="fa fa-user"></i> Autenticazione</h4>
+      </div>
+      <!--Body-->
+      <div class="modal-body">
+        <div class="md-form form-sm">
+          <i class="fa fa-pencil prefix"></i>
+          <input mdbInputDirective type="text" id="form30" class="form-control" data-success="">
+          <label for="form30">Inserisci il tuo Nome</label>
+        </div>
+
+        <div class="md-form form-sm">
+          <i class="fa fa-pencil prefix"></i>
+          <input mdbInputDirective type="text" id="form31" class="form-control" data-success="">
+          <label for="form30" data-error="Your Text" data-success="right">Inserisci il tuo Cognome</label>
+        </div>
+
+        <div class="md-form form-sm">
+          <i class="fa fa-lock prefix"></i>
+          <input mdbInputDirective type="password" id="form32" class="form-control">
+          <label for="form32">Inserisci il Pin</label>
+        </div>
+
+        <div class="text-center mt-2">
+          <button class="btn btn-info waves-light" mdbWavesEffect>Log in <i class="fa fa-sign-in ml-1"></i></button>
+        </div>
+
+      </div>
+      <!--Footer-->
+      <div class="modal-footer">
+        <div class="options text-center text-md-right mt-1">
+          <p><a href="#">
+            <small>Password dimenticata?</small>
+          </a></p>
+        </div>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+<!--Modal: Login Form-->

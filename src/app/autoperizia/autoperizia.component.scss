@@ -1,0 +1,42 @@
+mat-horizontal-stepper {
+  margin: 32px 16px 16px;
+}
+
+.btn-group-sm {
+  max-width: 100%;
+
+
+  label {
+    padding: 8px 1rem;
+  }
+}
+
+
+.confirm{
+  margin-top: 16px;
+}
+
+.date-accuracy{
+  width: 100%;
+}
+
+.date-accuracy label{
+  width: 33%;
+  text-transform: none;
+}
+
+.month-form{
+  width: 35%;
+}
+
+.day-form{
+  width: 20%;
+}
+
+.year-form{
+  width: 25%;
+}
+.calendar{
+  width: 8%;
+}
+
