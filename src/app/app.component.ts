@@ -36,7 +36,7 @@ export class AppComponent implements OnInit {
     this.dataService.getEntitiesParamBinary('ValidatePin', ({ pin: this.PIN }), context, data => {
       this.isValid = data[0];
 
-      let myData: Entity[] = [];
+      const myData: Entity[] = [];
       let descrizione: string;
       const stream = new BizStream();
       stream.addFilter(new BizFilter('Codice', FilterQueryOp.Equals.toString(), this.PIN, '1'));
