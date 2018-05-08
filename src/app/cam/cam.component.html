@@ -2,7 +2,7 @@
      style="position: fixed; top:0; left:0; background-color: white; ">
   <video #videoElement id="camera" style="width:100%;height:100%;"></video>
   <button id='Stop_Stream' (click)="stop()" class="btn btn-warning" disabled>Stop</button>
-  <button id='Take_Picture' class="btn btn-primary" disabled>Take Picture</button>
+  <button id='Take_Picture' (click) = "takeSnapshot()" class="btn btn-primary" disabled>Take Picture</button>
   <button id='Switch_Camera' (click)="this.front=!this.front; this.stop(); this.play()" class="btn btn-warning">Switch
     camera
   </button>

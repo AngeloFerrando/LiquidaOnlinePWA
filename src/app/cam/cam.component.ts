@@ -25,7 +25,7 @@ export class CamComponent {
     context = canvas.getContext('2d');
     context.drawImage(video, 0, 0, width, height);
 
-    img.src = canvas.toDataURL('image/png');
+    img.src = canvas.toDataURL('image/png'); // sarà da inserire all'interno del blob breeze per upload
     document.body.appendChild(img);
   }
 
@@ -49,8 +49,8 @@ export class CamComponent {
 
     // How to show in fullscreen
     // document.getElementById('camera').webkitRequestFullScreen();
-    document.getElementById('container-camera').style.width = '100vw';
-    document.getElementById('container-camera').style.height = '100vh';
+    document.getElementById('container-camera').style.width = '50vw';
+    document.getElementById('container-camera').style.height = '50vh';
     this.startRecording(constraint);
     // this.startRecording({ video: true, audio: true, maxLength: 10, debug: true });
   }
@@ -65,7 +65,8 @@ export class CamComponent {
           this.stream = stream;
           const video: HTMLVideoElement = this.videoElement.nativeElement;
           // video.id = 'camera';
-          video.src = window.URL.createObjectURL(stream);
+          // video.src = window.URL.createObjectURL(stream); // deprecated
+          video.srcObject = stream;
           // document.getElementById('camera').webkitRequestFullScreen();
           // video.addEventListener('click', this.takeSnapshot);
           // Set button to take a picture
@@ -86,7 +87,10 @@ export class CamComponent {
   stop() {
     this.hidden = true;
     const stream = this.stream;
-    stream.stop();
+    if (stream) {
+      stream.getTracks().forEach(function (track) { track.stop(); });
+    }
+    // stream.stop(); // da qualche problema
     (<HTMLInputElement> document.getElementById('Take_Picture')).disabled = true;
     (<HTMLInputElement> document.getElementById('Stop_Stream')).disabled = true;
     // stream.getAudioTracks().forEach(track => track.stop());
