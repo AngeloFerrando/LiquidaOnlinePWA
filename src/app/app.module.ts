@@ -4,7 +4,7 @@ import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {PublisherComponent} from './video-component/publisher/publisher.component';
 import {SubscriberComponent} from './video-component/subscriber/subscriber.component';
-import {OpentokService} from './video-component/opentok.service';
+import {OpentokService} from './services/opentok.service';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
 import {VideoChatComponent} from './video-component/video-chat.component';
@@ -25,7 +25,7 @@ import {
   MatSelectModule, MatStepperModule, MatToolbarModule
 } from '@angular/material';
 import {MenudemoComponent} from './menudemo/menudemo.component';
-import {GeoLocationService} from './video-component/geo-location.service';
+import {GeoLocationService} from './services/geo-location.service';
 import {DataService} from './services/dataService/data.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AutoperiziaComponent} from './autoperizia/autoperizia.component';

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { DataService } from '../services/dataService/data.service';
+import { DataService } from './dataService/data.service';
 import { EntityManager, Entity, FilterQueryOp } from 'breeze-client';
-import { BizStream } from '../services/dataService/bizStream';
-import { BizFilter } from '../services/dataService/bizFilter';
-import {BizSorter, SortDirection } from '../services/dataService/bizSorter';
+import { BizStream } from './dataService/bizStream';
+import { BizFilter } from './dataService/bizFilter';
+import {BizSorter, SortDirection } from './dataService/bizSorter';
 
 import * as OT from '@opentok/client';
 import config from '../../config';

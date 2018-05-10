@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {MapsAPILoader} from '@agm/core';
 
-declare var google:any;
+declare var google: any;
 
 @Injectable()
 export class GeoLocationService {
