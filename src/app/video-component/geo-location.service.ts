@@ -33,7 +33,7 @@ export class GeoLocationService {
     });
   }
 
-  getAddress(lat: number, lng: number) {
+  getAddress(lat: number, lng: number, callback: ((address: string) => void)) {
     if (navigator.geolocation) {
       this._loader.load().then(() => {
           const geocoder = new google.maps.Geocoder();
@@ -45,7 +45,7 @@ export class GeoLocationService {
               const result = results[0];
               // let rsltAdrComponent = result.address_components;
               // let resultLength = rsltAdrComponent.length;
-              return result.formatted_address;
+              callback(result.formatted_address);
             }
           });
         }

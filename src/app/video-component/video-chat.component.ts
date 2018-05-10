@@ -17,7 +17,7 @@ export class VideoChatComponent implements OnInit {
   changeDetectorRef: ChangeDetectorRef;
   lat: number;
   long: number;
-  address: any;
+  address: string;
 
 
   constructor(private ref: ChangeDetectorRef, private opentokService: OpentokService,
@@ -49,8 +49,10 @@ export class VideoChatComponent implements OnInit {
     source.subscribe(pos => {
       this.lat = pos.coords.latitude;
       this.long = pos.coords.longitude;
-      this.address = this.geoLocationService.getAddress(this.lat, this.long);
-      console.log(this.address);
+      const self = this;
+      this.geoLocationService.getAddress(this.lat, this.long, (newAddress: string) => {
+        self.address = newAddress;
+      });
     }, err => {
       console.log(err);
     });

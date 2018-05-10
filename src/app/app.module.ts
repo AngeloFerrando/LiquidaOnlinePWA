@@ -38,6 +38,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { VideoComponent } from './cam/video/video.component';
 import { PhotoComponent } from './cam/photo/photo.component';
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
+import {AgmCoreModule, GoogleMapsAPIWrapper} from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -76,9 +77,12 @@ import {AngularFontAwesomeModule} from 'angular-font-awesome';
     HttpClientModule,
     RouterModule.forRoot(routes),
     MDBBootstrapModule.forRoot(),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBQYkAUwy-POjiFa7UC9lUMws1BosPzXek'
+    }),
     environment.production ? ServiceWorkerModule.register('ngsw-worker.js') : []
   ],
-  providers: [OpentokService, GeoLocationService, DataService],
+  providers: [OpentokService, GeoLocationService, DataService, GoogleMapsAPIWrapper],
   bootstrap: [AppComponent],
   schemas: [ NO_ERRORS_SCHEMA ]
 })
