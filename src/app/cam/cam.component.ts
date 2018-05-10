@@ -1,5 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 
+// UNUSED COMPONENT
+// TODO delete when not needed to write the video and camera components
 @Component({
   selector: 'app-cam',
   templateUrl: './cam.component.html',
@@ -51,11 +53,10 @@ export class CamComponent {
     // document.getElementById('camera').webkitRequestFullScreen();
     document.getElementById('container-camera').style.width = '100vw';
     document.getElementById('container-camera').style.height = '100vh';
-    this.startRecording(constraint);
-    // this.startRecording({ video: true, audio: true, maxLength: 10, debug: true });
+    this.sendStreamToScreen(constraint);
   }
 
-  startRecording(config) {
+  sendStreamToScreen(config) {
     const browser = <any>navigator;
      const getUserMedia = (browser.getUserMedia || browser.webkitGetUserMedia || browser.mozGetUserMedia || browser.msGetUserMedia);
     if (browser.mediaDevices && getUserMedia) {

@@ -16,7 +16,6 @@ export class PhotoComponent implements OnInit {
 
   takeSnapshot() {
     this.preview_hidden = false;
-    stop();
 
     const img: any = document.querySelector('#preview_img');
     let context;
@@ -38,8 +37,10 @@ export class PhotoComponent implements OnInit {
     this.hidden = false;
 
     const constraint = {
-      audio: true,
-      video: {facingMode: (this.front ? 'user' : 'environment')}
+      audio: false,
+      video: {
+        facingMode: (this.front ? 'user' : 'environment'),
+      }
       /* Better Settings
        width: { min: 1024, ideal: 1280, max: 1920 }
        Front/Rear Camera
@@ -70,6 +71,7 @@ export class PhotoComponent implements OnInit {
           const video: HTMLVideoElement = this.videoElement.nativeElement;
           // video.id = 'camera';
           video.srcObject = stream;
+
           video.play();
         })
         .catch(function (err) {
@@ -83,11 +85,11 @@ export class PhotoComponent implements OnInit {
 
   stop() {
     this.hidden = true;
-    this.stream.getAudioTracks().forEach(track => track.stop());
-    this.stream.getVideoTracks().forEach(track => track.stop());
+    this.stream.getTracks().forEach(track => track.stop());
   }
 
   ngOnInit(): void {
+    // TODO testing only, to remove
     this.play();
   }
 
