@@ -15,8 +15,9 @@ export class VideoChatComponent implements OnInit {
   session: OT.Session;
   streams: Array<OT.Stream> = [];
   changeDetectorRef: ChangeDetectorRef;
-  lat: any;
-  long: any;
+  lat: number;
+  long: number;
+  address: any;
 
 
   constructor(private ref: ChangeDetectorRef, private opentokService: OpentokService,
@@ -48,6 +49,8 @@ export class VideoChatComponent implements OnInit {
     source.subscribe(pos => {
       this.lat = pos.coords.latitude;
       this.long = pos.coords.longitude;
+      this.address = this.geoLocationService.getAddress(this.lat, this.long);
+      console.log(this.address);
     }, err => {
       console.log(err);
     });

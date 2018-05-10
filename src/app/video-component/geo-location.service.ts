@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs/Observable';
+import {MapsAPILoader} from '@agm/core';
+
+declare var google:any;
 
 @Injectable()
 export class GeoLocationService {
 
-  constructor() { }
+  constructor(private _loader: MapsAPILoader) { }
 
   getLocation(opts): Observable<any> {
     return Observable.create(observer => {
@@ -28,5 +31,25 @@ export class GeoLocationService {
         observer.error('errors.location.unsupportedBrowser');
       }
     });
+  }
+
+  getAddress(lat: number, lng: number) {
+    if (navigator.geolocation) {
+      this._loader.load().then(() => {
+          const geocoder = new google.maps.Geocoder();
+          const latlng = new google.maps.LatLng(lat, lng);
+          const request = {latLng: latlng};
+
+          geocoder.geocode(request, (results, status) => {
+            if (status === google.maps.GeocoderStatus.OK) {
+              const result = results[0];
+              // let rsltAdrComponent = result.address_components;
+              // let resultLength = rsltAdrComponent.length;
+              return result.formatted_address;
+            }
+          });
+        }
+      );
+    }
   }
 }

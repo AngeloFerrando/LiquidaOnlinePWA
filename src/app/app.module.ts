@@ -35,6 +35,7 @@ import {PageBackgroundComponent} from './page-background/page-background.compone
 import {LoginComponent} from './login/login.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import {AgmCoreModule, GoogleMapsAPIWrapper} from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -70,9 +71,12 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     HttpClientModule,
     RouterModule.forRoot(routes),
     MDBBootstrapModule.forRoot(),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBQYkAUwy-POjiFa7UC9lUMws1BosPzXek'
+    }),
     environment.production ? ServiceWorkerModule.register('ngsw-worker.js') : []
   ],
-  providers: [OpentokService, GeoLocationService, DataService],
+  providers: [OpentokService, GeoLocationService, DataService, GoogleMapsAPIWrapper],
   bootstrap: [AppComponent],
   schemas: [ NO_ERRORS_SCHEMA ]
 })

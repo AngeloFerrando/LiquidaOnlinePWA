@@ -1,10 +1,14 @@
 <h1>{{title}}</h1>
-<h2>{{lat}}, {{long}}</h2>
+<h2>{{address}}</h2>
+<!--<h2>{{lat}}, {{long}}</h2>-->
 
 <label (click)="cam.play()" class="btn btn-secondary">da 0.01 a 7.00 MQ</label>
 <app-cam #cam></app-cam>
 
+
+<!--
 <div *ngIf="session">
   <app-publisher [session]="session"></app-publisher>
   <app-subscriber *ngFor="let stream of streams" [stream]="stream" [session]="session"></app-subscriber>
 </div>
+-->
