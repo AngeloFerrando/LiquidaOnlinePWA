@@ -52,6 +52,7 @@ export class VideoChatComponent implements OnInit {
       const self = this;
       this.geoLocationService.getAddress(this.lat, this.long, (newAddress: string) => {
         self.address = newAddress;
+        console.log(self.address);
       });
     }, err => {
       console.log(err);
