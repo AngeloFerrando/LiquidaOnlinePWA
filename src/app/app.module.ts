@@ -35,7 +35,9 @@ import {PageBackgroundComponent} from './page-background/page-background.compone
 import {LoginComponent} from './login/login.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import {AgmCoreModule, GoogleMapsAPIWrapper} from '@agm/core';
+import { VideoComponent } from './cam/video/video.component';
+import { PhotoComponent } from './cam/photo/photo.component';
+import {AngularFontAwesomeModule} from 'angular-font-awesome';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import {AgmCoreModule, GoogleMapsAPIWrapper} from '@agm/core';
     CamComponent,
     NavbarComponent,
     PageBackgroundComponent,
-    LoginComponent
+    LoginComponent,
+    VideoComponent,
+    PhotoComponent
   ],
   imports: [
     BrowserModule,
@@ -68,15 +72,13 @@ import {AgmCoreModule, GoogleMapsAPIWrapper} from '@agm/core';
     ReactiveFormsModule,
     MatStepperModule,
     BreezeBridgeHttpClientModule,
+    AngularFontAwesomeModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
     MDBBootstrapModule.forRoot(),
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyBQYkAUwy-POjiFa7UC9lUMws1BosPzXek'
-    }),
     environment.production ? ServiceWorkerModule.register('ngsw-worker.js') : []
   ],
-  providers: [OpentokService, GeoLocationService, DataService, GoogleMapsAPIWrapper],
+  providers: [OpentokService, GeoLocationService, DataService],
   bootstrap: [AppComponent],
   schemas: [ NO_ERRORS_SCHEMA ]
 })
