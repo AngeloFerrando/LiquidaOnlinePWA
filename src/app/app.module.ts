@@ -35,6 +35,9 @@ import {PageBackgroundComponent} from './page-background/page-background.compone
 import {LoginComponent} from './login/login.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { VideoComponent } from './cam/video/video.component';
+import { PhotoComponent } from './cam/photo/photo.component';
+import {AngularFontAwesomeModule} from 'angular-font-awesome';
 
 @NgModule({
   declarations: [
@@ -47,7 +50,9 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     CamComponent,
     NavbarComponent,
     PageBackgroundComponent,
-    LoginComponent
+    LoginComponent,
+    VideoComponent,
+    PhotoComponent
   ],
   imports: [
     BrowserModule,
@@ -67,6 +72,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     ReactiveFormsModule,
     MatStepperModule,
     BreezeBridgeHttpClientModule,
+    AngularFontAwesomeModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
     MDBBootstrapModule.forRoot(),

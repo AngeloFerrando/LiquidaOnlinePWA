@@ -1,10 +1,12 @@
 import {Component, ViewChild} from '@angular/core';
 
 @Component({
-  selector: 'app-cam',
-  templateUrl: './cam.component.html',
+  selector: 'app-video',
+  templateUrl: './video.component.html',
+  styleUrls: ['./video.component.scss']
+
 })
-export class CamComponent {
+export class VideoComponent {
   stream: MediaStream;
   @ViewChild('videoElement') videoElement: any;
 
@@ -57,7 +59,7 @@ export class CamComponent {
 
   startRecording(config) {
     const browser = <any>navigator;
-     const getUserMedia = (browser.getUserMedia || browser.webkitGetUserMedia || browser.mozGetUserMedia || browser.msGetUserMedia);
+    const getUserMedia = (browser.getUserMedia || browser.webkitGetUserMedia || browser.mozGetUserMedia || browser.msGetUserMedia);
     if (browser.mediaDevices && getUserMedia) {
       browser.mediaDevices.getUserMedia(config)
         .then(stream => {
