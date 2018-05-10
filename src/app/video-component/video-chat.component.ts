@@ -1,8 +1,8 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { OpentokService } from './opentok.service';
+import { OpentokService } from '../services/opentok.service';
 import * as OT from '@opentok/client';
-import {GeoLocationService} from './geo-location.service';
 import {DataService} from '../services/dataService/data.service';
+import {GeoLocationService} from '../services/geo-location.service';
 
 @Component({
   selector: 'app-video-chat',
@@ -26,7 +26,7 @@ export class VideoChatComponent implements OnInit {
   }
 
   ngOnInit () {
-    this.opentokService.initSession('772619013').then((session: OT.Session) => {
+    this.opentokService.initSession('742619016').then((session: OT.Session) => {
       this.session = session;
       this.session.on('streamCreated', (event) => {
         this.streams.push(event.stream);

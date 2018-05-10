@@ -30,20 +30,20 @@ describe('OpentokService', () => {
     });
 
     describe('initSession()', () => {
-      const OT = {
+      const OT1 = {
         initSession() {}
       };
       let session;
 
       beforeEach(() => {
-        spyOn(service, 'getOT').and.returnValue(OT);
+        spyOn(service, 'getOT').and.returnValue(OT1);
         session = jasmine.createSpyObj('session', ['connect', 'on']);
-        spyOn(OT, 'initSession').and.returnValue(session);
+        spyOn(OT1, 'initSession').and.returnValue(session);
       });
 
       it('should call OT.initSession', () => {
         service.initSession();
-        expect(OT.initSession).toHaveBeenCalledWith(config.API_KEY, config.SESSION_ID);
+        expect(OT1.initSession).toHaveBeenCalledWith(config.API_KEY, config.SESSION_ID);
         expect(service.session).toEqual(session);
       });
 

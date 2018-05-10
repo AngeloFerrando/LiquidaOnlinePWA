@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs/Observable';
 import { Http, Response } from '@angular/http';
 import { Injectable } from '@angular/core';
-import { EntityManager, EntityQuery, Entity, Predicate, FilterQueryOp } from 'breeze-client';
+import {EntityManager, EntityQuery, Entity, Predicate, FilterQueryOp, config} from 'breeze-client';
 import { BizStream } from './bizStream';
 import { BizFilter } from './bizFilter';
 import { BizSorter } from './bizSorter';
@@ -14,6 +14,10 @@ import { Dictionary } from '../../infrastructure/region/dictionary';
 export class DataService {
   constructor() {
     //   alert('DataService constructor');
+    const ajaxAdapter = <any>config.getAdapterInstance('ajax');
+    const headers = ajaxAdapter.defaultSettings['headers'] || {};
+    headers['Token'] = 'token';
+    ajaxAdapter.defaultSettings['headers'] = headers;
   }
 
   getEntities(entityName: string, context: EntityManager, callback: (data: Entity[]) => void) {

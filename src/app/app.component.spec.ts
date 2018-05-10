@@ -2,7 +2,7 @@ import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { PublisherComponent } from './video-component/publisher/publisher.component';
 import { SubscriberComponent } from './video-component/subscriber/subscriber.component';
-import { OpentokService } from './video-component/opentok.service';
+import { OpentokService } from './services/opentok.service';
 
 describe('AppComponent', () => {
   let fixture;
@@ -49,8 +49,8 @@ describe('AppComponent', () => {
     expect(app.streams).toEqual([]);
     expect(session.on).toHaveBeenCalledWith('streamCreated', jasmine.any(Function));
     expect(session.on).toHaveBeenCalledWith('streamDestroyed', jasmine.any(Function));
-    let stream = {};
-    let event = {
+    const stream = {};
+    const event = {
       stream
     };
     session.on.calls.argsFor(0)[1](event); // Call streamCreated handler
