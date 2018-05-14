@@ -14,24 +14,24 @@
       <div class="modal-body">
         <div class="md-form form-sm">
           <i class="fa fa-pencil prefix"></i>
-          <input mdbInputDirective type="text" id="form30" class="form-control" data-success="">
+          <input mdbInputDirective type="text" id="form30" class="form-control" data-success="" #name>
           <label for="form30">Inserisci il tuo Nome</label>
         </div>
 
         <div class="md-form form-sm">
           <i class="fa fa-pencil prefix"></i>
-          <input mdbInputDirective type="text" id="form31" class="form-control" data-success="">
+          <input mdbInputDirective type="text" id="form31" class="form-control" data-success="" #surname>
           <label for="form30" data-error="Your Text" data-success="right">Inserisci il tuo Cognome</label>
         </div>
 
         <div class="md-form form-sm">
           <i class="fa fa-lock prefix"></i>
-          <input mdbInputDirective type="password" id="form32" class="form-control">
+          <input mdbInputDirective type="password" id="form32" class="form-control" #pin>
           <label for="form32">Inserisci il Pin</label>
         </div>
 
         <div class="text-center mt-2">
-          <button class="btn btn-info waves-light" mdbWavesEffect>Log in <i class="fa fa-sign-in ml-1"></i></button>
+          <button class="btn btn-info waves-light" mdbWavesEffect (click)="login(name.value, surname.value, pin.value)">Log in <i class="fa fa-sign-in ml-1"></i></button>
         </div>
 
       </div>
