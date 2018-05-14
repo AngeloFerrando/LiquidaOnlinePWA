@@ -1,3 +1,29 @@
-<p>
-  video works!
-</p>
+<div class="col-md-12 text-center" id="container-camera" [hidden]="this.hidden">
+  <video #videoElement id="camera"></video>
+
+  <div class="buttons_container">
+    <button mat-fab color="accent" id='Exit_Stream' (click)="stopTakingVideo()" class="btn btn-warning camera_button">
+      <fa name="stop"></fa>
+    </button>
+
+    <button mat-fab color="accent" id='Take_Picture' (click)="startTakingVideo()" class="btn camera_button">
+      <fa name="camera"></fa>
+    </button>
+  </div>
+
+  <button mat-fab color="accent" id='Switch_Camera' (click)="switchCamera()" class="btn-small camera_button">
+    <fa name="undo"></fa>
+  </button>
+
+  <div #imagePreview class="video_preview" [hidden]="this.preview_hidden">
+    <video #videoPreview id="preview_video" ></video>
+    <div class="buttons_container">
+      <button mat-fab id='confirm_picture' (click)="stopCamera()" color="success">
+        <fa name="check"></fa>
+      </button>
+      <button mat-fab id='reject_picture' (click)="startTakingVideo()" color="warn">
+        <fa name="times"></fa>
+      </button>
+    </div>
+  </div>
+</div>

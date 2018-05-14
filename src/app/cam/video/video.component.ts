@@ -1,4 +1,6 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+
+declare var MediaRecorder: any;
 
 @Component({
   selector: 'app-video',
@@ -6,38 +8,76 @@ import {Component, ViewChild} from '@angular/core';
   styleUrls: ['./video.component.scss']
 
 })
-export class VideoComponent {
-  stream: MediaStream;
+export class VideoComponent implements OnInit {
   @ViewChild('videoElement') videoElement: any;
+  videoPreview: any;
 
-  hidden = true;
-  front = false;
+  /*
+      Adjustable settings
+   */
+  video_duration = 2000; // in ms
+  front_camera_default = false;
+  /*
+     END of Adjustable settings
+  */
+  stream: MediaStream;
+  video: Blob = null;
 
-  takeSnapshot() {
-    const img = document.querySelector('img') || document.createElement('img');
-    let context;
-    let canvas;
-    const video = document.getElementById('camera');
-    // Choose picture size (can be video width/height
-    const width = 300, height = 200;
+  hidden = false;
+  recording = false;
+  front = this.front_camera_default;
+  preview_hidden = true;
+  mediaRecorder: any;
 
-    canvas = document.createElement('canvas');
-    canvas.width = width;
-    canvas.height = height;
-    context = canvas.getContext('2d');
-    context.drawImage(video, 0, 0, width, height);
+  startTakingVideo() {
+    if (this.recording) {
+      return;
+    }
+    this.recording = true;
+    this.video = null;
 
-    img.src = canvas.toDataURL('image/png');
-    document.body.appendChild(img);
+    this.mediaRecorder = new MediaRecorder(this.stream);
+    this.mediaRecorder.ondataavailable = (e) => {
+      if (this.video !== null || this.mediaRecorder.state !== 'recording') {
+        // already received the first chunk of video, discard the current one
+        return;
+      }
+      this.video = e.data;
+      this.stopTakingVideo();
+    };
+
+    this.mediaRecorder.onstop = (e) => {
+      this.videoPreview.src = URL.createObjectURL(this.video);
+      this.videoPreview.load();
+      this.videoPreview.onloadeddata = () => this.videoPreview.play();
+    };
+
+    this.mediaRecorder.start(this.video_duration);
+    console.log(this.mediaRecorder.state);
   }
 
-  play() {
-    // document.getElementById('container-camera')
+  stopTakingVideo() {
+    this.mediaRecorder.stop();
+    this.recording = false;
+    console.log(this.mediaRecorder.state);
+  }
+
+  switchCamera() {
+    this.front = !this.front;
+    this.stopCamera();
+    this.startCamera();
+  }
+
+
+
+  startCamera() {
     this.hidden = false;
 
-    const constraint = {
-      audio: true,
-      video: {facingMode: (this.front ? 'user' : 'environment')}
+    const config = {
+      audio: false,
+      video: {
+        facingMode: (this.front ? 'user' : 'environment'),
+      }
       /* Better Settings
        width: { min: 1024, ideal: 1280, max: 1920 }
        Front/Rear Camera
@@ -49,50 +89,37 @@ export class VideoComponent {
        */
     };
 
-    // How to show in fullscreen
-    // document.getElementById('camera').webkitRequestFullScreen();
-    document.getElementById('container-camera').style.width = '100vw';
-    document.getElementById('container-camera').style.height = '100vh';
-    this.startRecording(constraint);
-    // this.startRecording({ video: true, audio: true, maxLength: 10, debug: true });
-  }
-
-  startRecording(config) {
     const browser = <any>navigator;
     const getUserMedia = (browser.getUserMedia || browser.webkitGetUserMedia || browser.mozGetUserMedia || browser.msGetUserMedia);
-    if (browser.mediaDevices && getUserMedia) {
-      browser.mediaDevices.getUserMedia(config)
-        .then(stream => {
-          // const videoTracks = stream.getVideoTracks();
-          this.stream = stream;
-          const video: HTMLVideoElement = this.videoElement.nativeElement;
-          // video.id = 'camera';
-          video.src = window.URL.createObjectURL(stream);
-          // document.getElementById('camera').webkitRequestFullScreen();
-          // video.addEventListener('click', this.takeSnapshot);
-          // Set button to take a picture
-          document.getElementById('Take_Picture').addEventListener('click', this.takeSnapshot);
-          // Enable the other buttons
-          (<HTMLInputElement> document.getElementById('Take_Picture')).disabled = false;
-          (<HTMLInputElement> document.getElementById('Stop_Stream')).disabled = false;
-          video.play();
-        })
-        .catch(function (err) {
-          alert('Permission Denied');
-        });
-    } else {
+    if (!browser.mediaDevices || !getUserMedia) {
       alert('Video is not supported');
+      return;
     }
+
+    browser.mediaDevices.getUserMedia(config)
+      .then(stream => {
+        this.stream = stream;
+        const video: HTMLVideoElement = this.videoElement.nativeElement;
+        video.srcObject = stream;
+        video.play();
+      })
+      .catch(function (err) {
+        console.log(err);
+        alert('Permission Denied, ' + err);
+      });
   }
 
-  stop() {
+
+  stopCamera() {
     this.hidden = true;
-    const stream = this.stream;
-    stream.stop();
-    (<HTMLInputElement> document.getElementById('Take_Picture')).disabled = true;
-    (<HTMLInputElement> document.getElementById('Stop_Stream')).disabled = true;
-    // stream.getAudioTracks().forEach(track => track.stop());
-    // stream.getVideoTracks().forEach(track => track.stop());
+    this.stream.getTracks().forEach(track => track.stop());
+  }
+
+  ngOnInit(): void {
+    this.videoPreview = document.getElementById('preview_video');
+
+    // TODO testing only, to remove
+    this.startCamera();
   }
 
 

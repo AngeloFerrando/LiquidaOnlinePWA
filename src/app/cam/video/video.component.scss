@@ -1,0 +1,56 @@
+#container-camera {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: white;
+  height: 100%;
+  width: 100%;
+}
+
+#camera{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: 20;
+  overflow: hidden;
+}
+.camera_button{
+  z-index: 21;
+}
+
+.buttons_container {
+  position: absolute;
+  bottom: 1rem;
+  width: 100%;
+  text-align: center;
+}
+
+#Take_Picture {
+  background-color: #F5F5F5;
+}
+
+#Take_Picture fa {
+  color: darkgray;
+}
+
+#Switch_Camera {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+}
+
+.video_preview {
+  position: absolute;
+  top: 0;
+  z-index: 400;
+}
+
+

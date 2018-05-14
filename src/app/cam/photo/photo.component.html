@@ -1,26 +1,26 @@
 <div class="col-md-12 text-center" id="container-camera" [hidden]="this.hidden">
-  <video #videoElement id="camera" style="width:100%;height:100%;"></video>
+  <video #videoElement id="camera"></video>
 
   <div class="buttons_container">
-    <button mat-fab color="accent" id='Exit_Stream' (click)="stop()" class="btn btn-warning">
+    <button mat-fab color="accent" id='Exit_Stream' (click)="stop()" class="btn btn-warning camera_button">
       <fa name="stop"></fa>
     </button>
-    <button mat-fab color="accent" id='Take_Picture' (click)="takeSnapshot()" class="btn">
+    <button mat-fab color="accent" id='Take_Picture' (click)="takeSnapshot()" class="btn camera_button">
       <fa name="camera"></fa>
     </button>
   </div>
 
-  <button mat-fab color="accent" id='Switch_Camera' (click)="switch()" class="btn-small">
+  <button mat-fab color="accent" id='Switch_Camera' (click)="switch()" class="btn-small camera_button">
     <fa name="undo"></fa>
   </button>
 
-  <div #imagePreview class="image_preview" [hidden]="this.preview_hidden">
+  <div #imagePreview class="video_preview" [hidden]="this.preview_hidden">
     <img id="preview_img">
     <div class="buttons_container">
-      <button mat-fab color="accent" id='confirm_picture' (click)="stop()" color="success">
+      <button mat-fab id='confirm_picture' (click)="stop()" color="success">
         <fa name="check"></fa>
       </button>
-      <button mat-fab color="accent" id='reject_picture' (click)="takeSnapshot()" color="warn">
+      <button mat-fab id='reject_picture' (click)="takeSnapshot()" color="warn">
         <fa name="times"></fa>
       </button>
     </div>
